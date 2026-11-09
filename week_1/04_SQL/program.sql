@@ -1,0 +1,1 @@
+CREATE TABLE BOOK(book_id num PRIMARY KEY );
