@@ -239,7 +239,7 @@
 // try
 // {
 //     Console.WriteLine("--- Starting Transaction ---");
-    
+
 //     decimal walletBalance = 50.00m;
 //     decimal itemCost = 75.00m;
 
@@ -326,3 +326,193 @@ if (DateTime.TryParse(manualDateText, out DateTime parsedDate))
 }
 
 Console.WriteLine("================================");
+
+
+//palindrome
+static bool IsPalindrome(string str)
+{
+    int i = 0, j = str.Length - 1;
+    while (i < j)
+    {
+        if (str[i] != str[j])
+        {
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
+
+
+}
+
+
+
+//second larget number
+
+static int SecondLargest(int[] arr)
+{
+    if (arr.Length < 2)
+    {
+        return -1;
+    }
+    int larg = int.MinValue, seclarg = int.MinValue;
+    bool hasLargest = false;
+    bool hasSecondLargest = false;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] > larg)
+        {
+            hasLargest = true;
+
+            seclarg = larg;
+            larg = arr[i];
+        }
+
+        else if (arr[i] > seclarg && arr[i] < larg)
+        {
+            hasSecondLargest = true;
+            seclarg = arr[i];
+        }
+
+    }
+
+    if (hasSecondLargest)
+        return seclarg;
+    else
+        return -1;
+
+}
+
+//first non-repeating character
+static char FirstNonRepeatingChar(string str)
+{
+    // Write your logic
+    Dictionary<char, int> freq = new Dictionary<char, int>();
+    for (int i = 0; i < str.Length; i++)
+    {
+        if (freq.ContainsKey(str[i]))
+        {
+            freq[str[i]]++;
+        }
+        else
+        {
+            freq[str[i]] = 1;
+        }
+
+    }
+
+    for (int i = 0; i < str.Length; i++)
+    {
+        if (freq[str[i]] == 1)
+            return str[i];
+
+    }
+    return '#';
+
+
+}
+
+
+
+static int[] TwoSum(int[] nums, int target)
+{
+    // Write your logic
+    Dictionary<int, int> store = new Dictionary<int, int>();
+
+    store.Add(nums[0], 0);
+    for (int i = 1; i < nums.Length; i++)
+    {
+        if (store.ContainsKey(target - nums[i]))
+        {
+            return [store[target - nums[i]], i];
+        }
+        else
+        {
+            store.Add(nums[i], i);
+        }
+    }
+    return [];
+}
+
+
+//
+static int[] RemoveDuplicates(int[] arr)
+{
+    if (arr == null || arr.Length == 0)
+        return [];
+
+    List<int> result = new List<int>();
+    HashSet<int> seen = new HashSet<int>();
+
+    for (int i = 0; i < arr.Length; i++)
+    {
+        // Complete the logic here
+        if (!seen.Contains(arr[i]))
+        {
+            result.Add(arr[i]);
+        }
+    }
+
+    return result.ToArray();
+}
+
+
+static int[] MoveZeros(int[] arr)
+{
+    // Write your logic
+    int nzpt = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] != 0)
+        {
+            arr[nzpt] = arr[i];
+            nzpt++;
+        }
+    }
+
+    for (int i = nzpt; i < arr.Length; i++)
+    {
+        arr[i] = 0;
+    }
+    return arr;
+}
+
+//oop concept practice
+class Employee
+{
+    public string Name;
+    public int Salary;
+    public Employee(string name, int salary)
+    {
+        Name = name;
+        Salary = salary;
+    }
+    public virtual int CalculateBonus()
+    {
+        return Salary / 10;
+    }
+}
+class Manager : Employee
+{
+    public Manager(string name, int salary) : base(name,salary)
+    {
+        
+    }
+    public override int CalculateBonus()
+    {
+        return Salary / 5;
+    }
+}
+
+class program
+{
+    static void Main()
+    {
+        Employee e1 = new Employee("John", 50000);
+        Employee e2 = new Manager("Alex", 80000);
+
+        Console.WriteLine(e1.CalculateBonus());
+        Console.WriteLine(e2.CalculateBonus());
+    }
+}
