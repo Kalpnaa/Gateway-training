@@ -296,3 +296,47 @@ const data = querystring.parse(body);
 
 console.log(data);
 ```
+
+
+##event loop
+-uses an event-driven , non-blocking approach to handle asynchronous opertaions efficiently
+
+event loop is the mechanism that allows node.js to handle asynchronous operations without blocking the main js thread
+
+
+##commonajs vs es modules
+commonsjs:-
+module.exports export
+require() import
+
+es modules
+uses import import and export
+export function add(a, b) {
+    return a + b;
+}
+import { add } from "./math.js";
+
+console.log(add(10, 20));
+
+
+## environment variabel using dotenv
+npm install dotenv
+ creating . env file anc can acess in js like
+ require("dotenv").config
+
+ process.env.port etc..
+
+ put .env in gitignore fors security
+
+
+ ##typescript in node.js
+
+ ts is js with static type system. and also catch errors before running application
+
+ mkdir proj
+ cd proj
+ npm init -y
+ npm install typescipt @types/node
+ npx tsc --init to create a tsconfig.json
+
+ 

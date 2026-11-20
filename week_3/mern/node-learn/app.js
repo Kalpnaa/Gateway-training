@@ -115,3 +115,27 @@
 // arg[0] - Node executable path
 // arg[1] - File path
 // arg[2] - User-provided argument
+
+
+//9. event loop
+
+// console.log("first")
+// setTimeout(()=>
+// {
+//    console.log("timeout");
+// },0)
+// console.log("end");
+
+
+// const fs = require("fs/promises");
+
+// async function readFileData() {
+//     console.log("Reading file...");
+
+//     const data = await fs.readFile("first.txt", "utf8");
+
+//     console.log(data);
+// }
+
+// readFileData();
+// console.log("Other code running");
